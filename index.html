@@ -164,6 +164,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/15/%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img2.baidu.com/it/u=3254351284,1220385510&fm=26&fmt=auto">
+      <meta itemprop="name" content="zhoulong">
+      <meta itemprop="description" content="Code is my life">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周龙的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/15/%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">组件基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-15 20:49:01 / 修改时间：21:18:58" itemprop="dateCreated datePublished" datetime="2021-11-15T20:49:01+08:00">2021-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><h4 id="什么是组件"><a href="#什么是组件" class="headerlink" title="什么是组件"></a>什么是组件</h4><p>​                 组件是一个可复用的vue实例对象,封装了HTML,css,js</p>
+<h4 id="为什么要学组件"><a href="#为什么要学组件" class="headerlink" title="为什么要学组件?"></a>为什么要学组件?</h4><p>​              方便开发,便于复用,容易维护</p>
+<p>​     <strong>什么时候用封装组件</strong>:遇到可重复标签.可复用的时候</p>
+<h2 id="组件的基础"><a href="#组件的基础" class="headerlink" title="组件的基础"></a>组件的基础</h2><h4 id="组件使用步骤"><a href="#组件使用步骤" class="headerlink" title="组件使用步骤:"></a>组件使用步骤:</h4><p>​            1.创建组件 -文件名.vue</p>
+<p>​             2,引入组件</p>
+<p>​             3,注册组件(全局) vue.component(‘组件名”,组件对象)或,局部组件</p>
+<p>​              4.使用组件名</p>
+<h4 id="scoped原理"><a href="#scoped原理" class="headerlink" title="scoped原理:"></a>scoped原理:</h4><p>​               1.当前组件的所有的标签加data-v-hash</p>
+<p>​                  2.当前所有的css选择器加 属性选择器[data-v-hash]</p>
+<h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><h4 id="父传子"><a href="#父传子" class="headerlink" title="(父传子):"></a>(父传子):</h4><ol>
+<li><p>子组件中定义 props 来接收父组件传递过来的数据</p>
+</li>
+<li><p>父组件中给子组件标签上进行属性绑定传值</p>
+<h4 id="循环组件-v-for"><a href="#循环组件-v-for" class="headerlink" title="循环组件 v-for:"></a><strong>循环组件 v-for</strong>:</h4><p>可以写在组件标签上,循环创建组件</p>
+<p>v-bind动态绑定属性给子组件传值</p>
+<h4 id="动态属性"><a href="#动态属性" class="headerlink" title="动态属性"></a><strong>动态属性</strong></h4><p>​    子组件改符传入的数据不通知父级,数据的不变</p>
+<p>   2.<strong>props 是</strong>只读 不能修改</p>
+<h4 id="组件通信-单向数据流"><a href="#组件通信-单向数据流" class="headerlink" title="组件通信_单向数据流:"></a>组件通信_单向数据流:</h4><p>​     从父到子的数据流向,叫单向数据流</p>
+</li>
+</ol>
+<h4 id="子传父"><a href="#子传父" class="headerlink" title="(子传父):"></a>(子传父):</h4><p>​          子组件触发父的自定义事件</p>
+<p>​          子组件内,恰当的实际,触发付给我绑定的自定义事件,大致父级       methods 里事件处理函数执行</p>
+<p>​      this.$emit(‘父组件事件名’,索引,)</p>
+<h5 id="流程"><a href="#流程" class="headerlink" title="流程:"></a>流程:</h5><p>​         1.父组件中给子组件绑定自定义事件.定义时间处理函数</p>
+<p>​          2.子组件在恰当时机触发事件</p>
+<p>​          3.恰当时机是这用户点击按钮的时候</p>
+<p>​          4使用 this.$emit()触发自定义事件</p>
+<p>​          5传递数据给父组件</p>
+<p>​           6父组件事件处理函数触发.接收数据并处理</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/14/%E5%9F%BA%E7%A1%80api/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -485,7 +581,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -498,7 +594,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
