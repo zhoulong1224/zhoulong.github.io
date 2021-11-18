@@ -164,6 +164,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/18/%E7%BB%84%E4%BB%B6-%E6%8F%92%E6%A7%BD-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img2.baidu.com/it/u=3254351284,1220385510&fm=26&fmt=auto">
+      <meta itemprop="name" content="zhoulong">
+      <meta itemprop="description" content="Code is my life">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周龙的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/18/%E7%BB%84%E4%BB%B6-%E6%8F%92%E6%A7%BD-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">组件-插槽-自定义指令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-18 09:36:54 / 修改时间：12:26:31" itemprop="dateCreated datePublished" datetime="2021-11-18T09:36:54+08:00">2021-11-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-组件-插槽"><a href="#1-组件-插槽" class="headerlink" title="1.组件-插槽:"></a>1.组件-插槽:</h3><h5 id="当组件内某一部分标签不确定怎么办"><a href="#当组件内某一部分标签不确定怎么办" class="headerlink" title="当组件内某一部分标签不确定怎么办?"></a>当组件内某一部分标签不确定怎么办?</h5><p>​                  用插槽技术</p>
+<h5 id="插槽的使用"><a href="#插槽的使用" class="headerlink" title="插槽的使用"></a>插槽的使用</h5><p>​            组件内用<slot><slot>占位</slot></slot></p>
+<p>​             使用组件时,传入具体标签插入</p>
+<h5 id="插槽的运行效果"><a href="#插槽的运行效果" class="headerlink" title="插槽的运行效果?"></a>插槽的运行效果?</h5><p>​                 传入的标签会替换掉slot显示</p>
+<h5 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽:"></a>具名插槽:</h5><p>​                  **概念:**一个组件内两处以上需要外部传入标签的地方</p>
+<p>​                  <strong>语法:</strong>  slot使用name属性去分名字</p>
+<p>​                   template标签配合v-slot:名字分发对应的标签</p>
+<p>​                    v-slot:简写 #</p>
+<p>​      <strong>使用步骤</strong></p>
+<p>​             组件内:slot占位.设置name属性用于区分</p>
+<p>​               使用者:template 配合v-slot:name来替换slot</p>
+<h5 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h5><p>​       **概念:**使用插槽是,想使用子组件内变量</p>
+<p>​        <strong>口诀:</strong></p>
+<p>​           子组件,在slot上绑定属性和子组件内的值</p>
+<p>  使用组件,传入自定义标签,用template和v-slot=’自定义变量名’</p>
+<p>   scope变量名自动绑顶slot上所有属性和值</p>
+<h3 id="2-组件自定义指令"><a href="#2-组件自定义指令" class="headerlink" title="2.组件自定义指令:"></a>2.组件自定义指令:</h3><h5 id="局部注册-只在当前组件中使用"><a href="#局部注册-只在当前组件中使用" class="headerlink" title="局部注册:只在当前组件中使用"></a><strong>局部注册:只在当前组件中使用</strong></h5><pre><code>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="comment">&lt;!-- &lt;input type=&quot;text&quot; v-gfocus&gt; --&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-focus</span>&gt;</span></span></span><br><span class="line"><span class="xml">      </span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 目标: 创建 &quot;自定义指令&quot;, 让输入框自动聚焦</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 1. 创建自定义指令</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 全局 / 局部</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 2. 在标签上使用自定义指令  v-指令名</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 注意:</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// inserted方法 - 指令所在标签, 被插入到网页上触发(一次)</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// update方法 - 指令对应数据/标签更新时, 此方法执行</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="attr">colorStr</span>: <span class="string">&#x27;red&#x27;</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">directives</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="attr">focus</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="function"><span class="title">inserted</span>(<span class="params">el</span>)</span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">                el.focus()</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">&#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<h5 id="全局注册-所有指令都可以使用"><a href="#全局注册-所有指令都可以使用" class="headerlink" title="全局注册:所有指令都可以使用"></a><strong>全局注册:所有指令都可以使用</strong></h5><pre><code> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局指令 - 到处&quot;直接&quot;使用</span></span><br><span class="line">Vue.directive(<span class="string">&quot;gfocus&quot;</span>, &#123;</span><br><span class="line">  <span class="function"><span class="title">inserted</span>(<span class="params">el</span>)</span> &#123;</span><br><span class="line">    el.focus() <span class="comment">// 触发标签的事件方法</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="3-refs-获取DOM"><a href="#3-refs-获取DOM" class="headerlink" title="3.$refs-获取DOM"></a>3.$refs-获取DOM</h3><p>​      利用 ref 和 $refs 可以用于获取 dom 元素</p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用:"></a><strong>使用:</strong></h5> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>1. 获取原生DOM元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;h&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;myH&quot;</span>&gt;</span>我是一个孤独可怜又能吃的h1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 目标: 获取组件对象</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 1. 创建组件/引入组件/注册组件/使用组件</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 2. 组件起别名ref</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="comment">// 3. 恰当时机, 获取组件对象</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">&quot;h&quot;</span>)); <span class="comment">// h1</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.$refs.myH); <span class="comment">// h1</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">&#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h5 id="vue如何能否获取到组件对象"><a href="#vue如何能否获取到组件对象" class="headerlink" title="vue如何能否获取到组件对象?"></a>vue如何能否获取到组件对象?</h5><p>​    可以  目标组件添加ref属性</p>
+<p>​     this,$refs.名字获取组件对象  </p>
+<h3 id="4-nextTick"><a href="#4-nextTick" class="headerlink" title="4.$nextTick"></a>4.$nextTick</h3><p>​    点击改变data,获取原生DOM内容</p>
+<p>  等DOM更新后,触发次方法里函数体执行</p>
+<ul>
+<li>语法:this.$nexTick(函数体)</li>
+</ul>
+<h3 id="5-v-model原理"><a href="#5-v-model原理" class="headerlink" title="5.v-model原理"></a>5.v-model原理</h3><p>​      v-model实际上实现的是什么?</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.向标签内的value属性赋值</span><br><span class="line">2.给标签绑定input事件, 并把收到的值, 赋予给vue变量</span><br><span class="line">3.v-model起始就是使用v-bind绑定value数据+ v-on 绑定input事件 并把值赋值给了变量</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/17/vue%E7%BB%84%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -683,7 +783,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -696,7 +796,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
